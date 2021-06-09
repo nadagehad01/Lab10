@@ -41,26 +41,25 @@
   <!-- Our custom script. -->
   <script type="text/javascript">
     (function() {
-     var factory = splitio({
-      core: {
-     authorizationKey: 'hgev6itmskq1rst0p7qodm28fbu1eq0d4q5g',
-     key: Math.random().toString()
-     }
-    });
+       var factory = splitio({
+        core: {
+          authorizationKey: 'hgev6itmskq1rst0p7qodm28fbu1eq0d4q5g',
+          key: Math.random().toString()
+        }
+      });
       var client = factory.client();
       client.on(client.Event.SDK_READY, function() {
         var treatment = client.getTreatment('double_column');
-
         if (treatment === 'on') {
-  // Insert code for on treatment
-         } else if (treatment === 'off') {
-  // Insert code for off treatment
-          } else {
-  // Insert code for control treatment
-          }
-      });
-      client.destroy().then(function() {
-  // Your data is successfully flushed.
+          document.getElementsByTagName("main")[0].className = "double-column";
+        } else if (treatment === 'off') {
+          document.getElementsByTagName("main")[0].className = "single-column";
+        } else {
+          document.getElementsByTagName("main")[0].className = "single-column";
+        }
+        client.destroy().then(function() {
+          // Your data is successfully flushed.
+        });
       });
     })();
   </script>
